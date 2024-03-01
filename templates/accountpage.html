@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/static/css/account.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+        <link href="/static/css/editing.css" rel="stylesheet">
+        <script defer src="/static/js/deleting_articles.js"></script>
+        <title>Account</title>
+    </head>
+
+    <body>
+        {% include 'header.html' %}
+        
+        <h1>{{username}}'s Account</h1>
+        <div class="listOfPost" id="listOfPost">
+            {% if data == [] %}
+                <h2 style="text-align: center; color: green; margin-top: 15%;">NO ARTICLES? MAKE ONE!</h2>
+            {% else %}
+            <div class="pure-g" id="pure-g">
+                {% for article in data %}
+                    <div class="pure-u-sm-1-1 pure-u-md-1-2 pure-u-lg-1-3">
+                        <div class="post" id="post">
+                            <a href="/article/{{article.article_title}}"><p id="articleTitle" class="title">{{article.article_title}}</p></a>
+                            <img class="postImage" src="/images/image{{article.article_id}}" style="width: 320px; height: 400px;"/>
+                            <div class="buttonDiv">
+                                <a href="/myaccount/edit/{{article.article_title}}" class="redirect"><input id="editButton" type="button" value="Edit"></a>
+                                <input id="delete" type="button" value="Delete" onclick="deleting(this)" class="{{article.article_title}}">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        
+        {% include 'createbutton.html' %}
+        </div>    
+    </body>
+    
+</html>

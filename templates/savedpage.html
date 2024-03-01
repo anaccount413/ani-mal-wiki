@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <link href="/static/css/editing.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
+        <title>Edit</title>
+    </head>
+    <body>
+        {% include "header.html" %}
+        <h1 class="editor_h1">Edit Article "{{article_title}}"</h1>
+        <div class="fullEditContainer">
+            <input type="text" placeholder="Title..." class="articleTitle" id="articleTitle" value="{{article_title}}" readonly>
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="image" id="image-upload-edit" accept="image/png, image/jpeg">
+            </form>
+            <div id="editorContainer">
+                <div id="newArticle">
+                    <script>
+                        const toolbarContainer2 = [
+                            [{'header': ['2',false]}],
+                            [{'font': []}],
+                            [{'size' : ['small', false, 'large', 'huge'] }],
+                            [{'color': []}, {'background' : []}],
+                            ['bold', 'italic', 'underline', 'strike'],
+                            [{'align': ['', 'center', 'right', 'justify']}],
+                            [{'list': 'ordered'}, {'list': 'bullet'}],
+                            [{ 'script': 'sub'}, { 'script': 'super' }],
+                            ['clean'],
+                        ];
+
+                        const tempQuill = new Quill("#newArticle", {
+                            modules : {
+                                toolbar: toolbarContainer2
+                            },
+                            theme : 'snow'});
+
+                    
+                        tempQuill.setContents({{response | safe}});
+
+                        // include similar event listeners as in quill.js for publishing/saving etc.
+
+                    
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="inputDiv">
+            <input type="button" value="Save" id="update">
+            <input type="button" value="Publish" id="publish">
+            <input type="button" value="Delete" id="delete">
+            <a href="/myaccount" style="text-decoration: none;"><input type="button" value="Exit" id="Exit"></a>
+            <script>
+                
+                async function sendInformationToPython() {
+
+
+                const originalString = "some string with spaces";
+                const modifiedString = originalString.split(' ').join('_');
+
+                console.log(modifiedString); // Output: some_string_with_spaces
+
+                const quillcontent = tempQuill.getContents();
+
+                // now that they clicked publish, whatever is in the image form at the moment is what they want to send
+                // if the user never added an image, it will just send as null
+
+                let image = document.getElementById('image-upload-edit')
+                let image_file = image.files[0]
+                console.log(image_file)
+
+                let title = document.getElementById("articleTitle").value;
+                let modified_title = title
+                let formData = new FormData()
+                formData.append("title", modified_title)
+                formData.append("delta", JSON.stringify(quillcontent))
+                formData.append("html_content", tempQuill.getSemanticHTML())
+                formData.append("image_content", image_file)
+
+                
+
+
+                console.log('/article/' + modified_title)
+                const response = await fetch("/article/" + modified_title, {
+                    method : "POST",
+                    body : formData
+                });
+
+                if(response.ok) {
+                    console.log(response.status)
+                    console.log(response)
+                    // response holds get request from redirect
+                    window.location.href = "/article/" + modified_title 
+                } 
+
+                else {
+                    console.log(response.status)
+                }
+
+                }
+
+
+                document.getElementById("publish").addEventListener("click", ()=>{
+                sendInformationToPython();
+                })
+
+                const update = document.getElementById("update");
+                if(update != null) {
+                    update.addEventListener("click", async ()=> {
+                        const deltaObject = tempQuill.getContents();
+                        console.log(deltaObject);
+
+                        let title = document.getElementById("articleTitle").value;
+                        console.log(title);
+                
+                        let modified_title = title.split(' ').join('_')
+                        let image = document.getElementById('image-upload-edit')
+                        let image_file = image.files[0]
+                        
+                        let formData = new FormData()
+                        formData.append("title", modified_title)
+                        formData.append("delta", JSON.stringify(deltaObject))
+                        // formData.append("html_content", quill.getSemanticHTML())
+                        formData.append("image_content", image_file)
+
+                        sendBack = {
+                            title : modified_title,
+                            delta : formData
+                        }
+                        // console.log('/article/' + modified_title)
+                        const response = await fetch("/update", {
+                            method : "POST",
+                            body : formData
+                        });
+                    
+                        if(response.ok) {
+                            console.log(response.status)
+                            console.log(response)
+                            // response holds get request from redirect
+                            window.location.href = "/myaccount/edit/" + modified_title 
+                        } 
+                    
+                        else {
+                            console.log(response.status)
+                        }
+                    })
+                }
+
+                const deleting = document.getElementById("delete");
+                if(deleting != null) {
+                    deleting.addEventListener("click", async ()=> {
+
+                        let title = document.getElementById("articleTitle").value;
+                        let modified_title = title.split(' ').join('_')
+                        sendBack = {
+                            title : modified_title,
+                        }
+                        // console.log('/article/' + modified_title)
+                        const response = await fetch("/delete", {
+                            method : "DELETE",
+                            headers : {
+                                "Content-Type" : "application/json"
+                            },
+                            body : JSON.stringify(sendBack)
+                        });
+                    
+                        if(response.ok) {
+                            console.log(response.status)
+                            console.log(response)
+                            // response holds get request from redirect
+                            window.location.href = "/myaccount"; 
+                        } 
+                    
+                        else {
+                            console.log(response.status)
+                        }
+                    })
+                }
+
+            </script>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Animal Wiki</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+        <link href="/static/css/home.css" rel="stylesheet">
+        <link href="/static/css/editing.css" rel="stylesheet">
+    </head>
+    <body>
+        {% include "header.html" %}
+        <div class="main">
+        <h1>Animal Wikipedia</h1>
+            <img class="homeImage" src="../static/images/collage.jpg" alt="Animal Collage">
+            <form action="/search" method="GET">
+                <input class="homeSearchBar" type="text" placeholder="search articles here" name="search">
+                <input class="homeSearchButton" type="submit" value="Search">
+            </form>
+        </div>
+        <div class="quickLinkContainer">
+            <a href="/article/Lion" class="quickLink">Lion</a>
+            <a href="/article/Dragonfly" class="quickLink">Dragonfly</a>
+            <a href="/article/Blue%20Whale" class="quickLink">Blue Whale</a>
+            <a href="/article/Platypus" class="quickLink">Platypus</a>
+            <a href="/article/Elephant" class="quickLink">Elephant</a>
+            <a href="/article/Baboon" class="quickLink">Baboon</a>
+        </div>
+        {% include 'createbutton.html' %}
+        
+    </body>
+</html>

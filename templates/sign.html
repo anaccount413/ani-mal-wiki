@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title> Login </title>
+        <script src="https://cdn.auth0.com/js/lock/12.4/lock.min.js"></script>
+    </head>
+
+    <body class="signpage">
+        <div id="login-container"></div>
+
+        <script>
+            console.log(window.location.origin)
+
+        var auth0_domain = '{{ auth0_domain }}';
+            // Initialize Auth0 Lock
+            var lock = new Auth0Lock('{{ auth0_client_id }}', '{{ auth0_domain }}', {
+                auth: {
+                    redirectUrl: "{{url_for('callback', _external=True)}}",
+                    responseType: 'code'
+                }
+            });
+
+            // Show Auth0 Lock widget
+            lock.show();
+        </script>
+
+    </body>
+    
+</html>

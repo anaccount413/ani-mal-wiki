@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link href="/static/css/editing.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
+        <title>Edit</title>
+    </head>
+
+
+    <body>
+        {% include "header.html" %}
+        <h1 class="editor_h1">Create New Article</h1>
+        <div class="fullEditContainer">
+            <input type="text" placeholder="Title..." class="articleTitle" id="articleTitle" minlength="3" maxlength="30">
+
+
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="image" id="image-upload" accept="image/png, image/jpeg">
+            </form>
+
+            
+            <div id="editorContainer">
+                <div id="editor">
+                    <script defer src="/static/js/quill.js"></script>
+                </div>
+            </div>
+            
+        </div>
+            <div class="inputDiv">
+                <input type="button" value="Save" id="save">
+                <input type="button" value="Publish" id="publish">
+                <input type="button" value="Delete" id="delete_button">
+                <a href="/myaccount" style="text-decoration: none;"><input type="button" value="Exit" id="Exit"></a>
+            </div>
+
+    </body>
+</html>

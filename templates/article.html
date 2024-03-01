@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title> {{title}} </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/editing.css') }}">
+                
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/quill-delta-to-html/dist/quill-delta-to-html.js"></script>
+    </head>
+
+    <body>
+        
+        {% include "header.html" %}
+        
+        <div class = "articlebody_container">
+            <div class ="sidebar1_container">
+                <div class ="tablecontents">
+                    <h1 id="contentheader"> Contents </h1>
+                    <ul class="contents_list">
+                        <li> <a href="#"> Top </a></li>
+                        {% for id, heading in heading_data %}
+                        <li> <a href='#{{id}}'> {{heading}} </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class = "content_container">
+                <h1> {{title}} </h1>
+
+                <div class="readeditlinks"> 
+                    <p> <b> Read </b> </p> 
+                    {% if generated_article %}
+                    <a href="/myaccount/edit/{{title}}" class="redirect">Edit</a>
+                    {%endif%}
+                </div>
+
+                {% include "infobox.html" %}
+                <div id="processed_contents">
+                    {{contents | safe}}
+                </div>
+            </div>
+
+            <div class = "sidebar2_container">
+
+            </div>
+        </div>
+        
+
+    </body>
+</html>

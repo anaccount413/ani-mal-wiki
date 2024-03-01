@@ -1,0 +1,365 @@
+body {
+    margin: 0px;
+    background-color: rgb(248, 250, 248);
+    font-family: Arial;
+}
+
+.menu {
+    margin: 10px;
+    text-align: right;
+}
+
+.menu input {
+    width: 130px;
+    height: 40px;
+    background-color: rgb(0, 100, 0);
+    color: white;
+    border: none;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+}
+
+.articleTitle {
+    padding: 10px;
+    height: 6%;
+    width: 50%;
+    font-size: 24px;
+    display: block;
+    margin: auto;
+    padding: 0.3em;
+    box-sizing: border-box;
+    border: 2px solid rgb(103, 103, 103);
+    border-radius: 8px;
+    text-align: center;
+    background-color: white;
+}
+
+#image-upload, #image-upload-edit{
+    display: block;
+    margin: auto;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.fullEditContainer{
+    border: 5px solid rgb(0,100,0);
+    margin: 0px 15%;
+    padding: 1.5em 0em;
+    background-color: whitesmoke;
+}
+
+#editorContainer,.ql-container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 0px;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+#editor, #newArticle {
+    height: 50%;
+    width: auto;
+    display: block;
+    background-color: white;
+    border-top: 2px solid rgb(0, 0, 0);
+}
+
+.editor_h1{
+    border: 4px solid rgb(0,100,0);
+    padding: 20px;
+    margin: 30px 15% 0;
+    text-align: center;
+    color: white;
+    border-bottom-width: 0px;
+    background-color: rgb(0, 100, 0);
+}
+
+
+.ql-toolbar {
+    height: 5.5%;
+    width: auto;
+    text-align: center;
+    background-color: rgb(198, 198, 198);
+}
+
+.tablecontents{
+    position: sticky; 
+    top: 2em;
+}
+
+.articleheader_container header{
+    display: flex;
+    margin-bottom: 0;
+    padding: 0;
+    background-color:rgb(135, 207, 135);
+    border-bottom: 5px solid rgb(0, 100, 0);
+}
+
+.search_bar{
+    margin-top: 2em;
+    margin-left: 15em;
+}
+
+.login_logout_container{
+    margin: auto;
+    margin-right: 30px;
+    text-align: right;
+    
+}
+
+.login_logout{
+    width: 170px;
+    height: 40px;
+    background-color: rgb(0, 100, 0);
+    color: white;
+    border: none;
+    padding: 0.5em 2em;
+    margin-left: 7px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.articlebody_container{
+    margin-bottom: 0;
+}
+
+.sidebar1_container, .sidebar2_container{
+    float: left;
+    width: 17.5vw;
+    height: 100vh;
+}
+
+.sidebar1_container{
+    border-color:#134b5f;
+    border-width: 0.01em;
+    
+}
+
+#processed_contents{
+    margin-bottom: 10em;
+    padding-bottom: 0.8em;
+
+}
+
+.content_container{
+    border-color:#134b5f;
+    border-width: 0.01em;
+    width:62vw;
+    float:left;
+    height:100vh;
+}
+
+.infobox{
+    float: right;
+    margin-left: 1em;
+    margin-right: 1em;
+    clear: right;
+    text-align: left; 
+    width: 2em; 
+    font-size: 100%;
+    border-style: solid;
+}
+
+.infobox .title{
+    border-style: solid;
+    background-color: tan;
+    text-align: center;
+}
+
+.infobox .classification{
+    border-style: solid;
+    background-color: lightgreen;
+    text-align: center;
+}
+
+.infobox {
+    width: 25%;
+}
+
+.content_container h1{
+    padding-left: 0.5em;
+    margin-bottom: 0;
+}
+
+.content_container .readeditlinks{
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-width: 0.05em;
+    padding: 0;
+    margin-bottom: 1em;
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.content_container .readeditlinks p, .content_container .readeditlinks a{
+    margin: 0;
+    margin-top: 0.8em;
+    margin-bottom: 0.3em;
+    text-decoration: none;
+    color: black;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.content_container p{
+    padding-left: 1em;
+
+}
+
+.content_container h2{
+    margin-left: 0.5em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom-style: solid; 
+    border-bottom-width: 0.05em;
+    width: 50%;
+
+}
+
+.sidebar1_container{
+    padding-top: 3em;
+}
+
+#lastp{
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+}
+
+#contentheader{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.contents_list{
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    padding-left: 0.5em;
+}
+
+.contents_list li {
+    padding: 5px 0px;
+}
+.contents_list a{
+    text-decoration: none;
+    color: blue;
+}
+
+.tablecontents{
+    margin-left: 1em;
+}
+
+
+.logo_image{
+    width: 125px;
+    height: 110px;
+    padding: 12px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    
+}
+
+.inputDiv {
+    display: flex;
+    border: 4px solid rgb(0,100,0);
+    border-top: none;
+    margin: 0px 15% 25px;
+    justify-content:space-evenly;
+    background-color: rgb(0, 100, 0);
+}
+
+.inputDiv input {
+    height: 40px;
+    width: 150px;
+    color: white;
+    margin: 15px;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(0, 100, 0);
+    text-decoration: none;
+    border: 2.5px outset rgb(157, 218, 157);
+    border-radius: 5px;
+    background-color: whitesmoke;
+}
+
+.previousArticles {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 15px 20px 15px 20px;
+    padding: 10px;
+    overflow-x:scroll;
+    border: 2px;
+    border-style: solid;
+}
+
+.previousPost a {
+    display: flex;
+    justify-content: center;
+    height: 35px;
+}
+
+.posts {
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    border: 2px;
+    border-radius: 2px;
+    border-style: solid;
+    text-align: center;
+}   
+
+#create-button {
+    display: block;
+    padding: 0.5em 1.7em;
+    margin: auto;
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    background-color: rgb(0, 100, 0);
+    border: none;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#create-button:hover {
+    background-color: rgb(0, 125, 0);
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+}
+
+.sBar {
+    margin: auto !important;
+    margin-left: 1.5em !important;
+}
+
+.sBar input {
+    height: 40px;
+    width:30vw;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 13px;
+    color: rgb(0, 100, 0);
+    background-color: whitesmoke;
+    font-weight: bold;
+    font-size: 18px;
+    border: 3px solid #38761d;
+}
+
+.sBar input:focus{
+    outline : none !important;
+}
